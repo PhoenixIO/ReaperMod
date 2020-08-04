@@ -83,9 +83,6 @@ client.systems = {
 
     disable(gameState) {
       this.mode = false;
-      for (const system of Object.values(client.systems)) {
-        if (system.deactivatable) system.disable(gameState);
-      }
     }
 
     draw(client, ctx) {
@@ -121,7 +118,7 @@ client.systemsByHero = {
   REAPER: {
     reaperInvisInfo: new class extends System {
       constructor() {
-        super(false, 'Digit6');
+        super(true, 'Digit6');
         this.renderCircle = null;
         this.wasActivated = false;
       }
@@ -167,7 +164,6 @@ client.systemsByHero = {
       disable() {
         this.mode = false;
         this.renderCircle = null;
-        this.wasActivated = false;
       }
 
       draw(ctx, camera) {
@@ -193,7 +189,6 @@ client.systemsByHero = {
           this.renderCircle.radius -= this.playerSpeed;
           if (this.renderCircle.radius < 0) {
             this.renderCircle = null;
-            this.wasActivated = true;
           }
         }
 
@@ -204,6 +199,7 @@ client.systemsByHero = {
           this.renderCircle = {
             radius: this.abilityLastsTime * 30 * this.playerSpeed,
           };
+          this.wasActivated = true;
         }
       }
     },
