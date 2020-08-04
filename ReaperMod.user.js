@@ -2,9 +2,10 @@
 // @name         ReaperMod
 // @namespace    https://evades.io/
 // @version      1.0.0
-// @description  ReaperMod for evades.io
+// @description  ReaperMod for evades.io.
 // @author       Phoenix
-// @match        https://evades.io/*
+// @include      /http(?:s)?:\/\/(www\.)?(eu\.)?evades\.(io|online)//
+// @run-at       document-start
 // @grant        none
 // ==/UserScript==
 
